@@ -1,105 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
     <title>Projetos de Tecnologia Assistiva no Brasil - SisAssistiva</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#2c5282">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Biblioteca Leaflet para mapas -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     
     <style>
-        /* Estilos gerais otimizados para tablet */
-        * {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            user-select: none;
-            box-sizing: border-box;
-        }
-        
+        /* Estilos gerais */
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             overflow: hidden;
-            touch-action: manipulation;
-            background-color: #f5f5f5;
         }
         
         /* Container principal flexível */
         #container {
             display: flex;
             height: 100vh;
-            width: 100vw;
-            position: relative;
         }
         
         /* Estilo do mapa (ocupa todo o espaço disponível) */
         #map {
             flex: 1;
             height: 100%;
-            width: 100%;
         }
         
-        /* Sidebar - painel lateral otimizado para tablet */
+        /* Sidebar - painel lateral */
         #sidebar {
             width: 0;
-            height: 100vh;
-            position: fixed;
-            right: 0;
+            height: calc(100vh - 2cm);  /* Subtrai a altura da barra de logos */
+            position: fixed; /* Fixa na tela */
+            right: 0; /* Ancora no lado direito */
             top: 0;
-            transition: width 0.3s ease;
+            transition: width 0.3s;
             background: white;
-            box-shadow: -3px 0 15px rgba(0,0,0,0.2);
+            box-shadow: -3px 0 10px rgba(0,0,0,0.1);
             overflow-x: hidden;
-            overflow-y: auto;
+            overflow-y: auto; /* Habilita rolagem vertical */
             z-index: 1000;
-            -webkit-overflow-scrolling: touch;
         }
         
         /* Classe para sidebar aberta */
         #sidebar.open {
-            width: min(700px, 80vw);
+            width: min(700px, 85vw, 60vh);
+            max-width: none;
         }
         
         /* Conteúdo da sidebar */
         #sidebar-content {
-            padding: 20px;
-            padding-bottom: 2cm;
+            padding-bottom: max(2cm, 5vh);   /* Adiciona espaço para a barra de logos */         
             width: 100%;
             box-sizing: border-box;
             word-wrap: break-word;
             hyphens: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+            font-size: clamp(14px, 2vw, 16px);
+       }
         
-        /* Botão de fechar sidebar otimizado para toque */
+        /* Botão de fechar sidebar */
         #close-sidebar {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(255,255,255,0.9);
+            background: none;
             border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
             font-size: 35px;
             color: #666;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 1001;
         }
         
-        #close-sidebar:hover, #close-sidebar:active {
+        #close-sidebar:hover {
             color: #333;
-            background: white;
         }
         
         /* Contador de marcadores */
@@ -110,12 +83,12 @@
             background-color: #C249AD;
             color: white;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
             border: 2px solid white;
             z-index: 1001;
@@ -123,24 +96,19 @@
         
         /* Estilos para informações dos projetos */
         .project-info {
-            padding: 15px;
-            margin-bottom: 15px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            border-left: 4px solid #C249AD;
+            padding: 20px;
         }
         
         .project-info h3 {
             margin-top: 0;
             color: #2c5282;
-            padding-bottom: 8px;
-            font-size: 18px;
+            border-bottom: 2px solid #C249AD;
+            padding-bottom: 10px;
         }
         
         .project-info p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             line-height: 1.6;
-            font-size: 16px;
         }
         
         .project-info b {
@@ -159,73 +127,75 @@
         .group-header {
             color: #2c5282;
             font-weight: bold;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #eee;
-            font-size: 20px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
         }
         
-        /* Cabeçalho do mapa otimizado para tablet */
+        /* Cabeçalho do mapa */
         .map-header {
             position: absolute;
-            top: 15px;
-            left: 15px;
+            top: 10px;
+            left: 20px;
             z-index: 1000;
             background: rgba(255,255,255,0.95);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            max-width: min(400px, 70vw);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-width: 200px;
+            max-width: 25vw;
             width: auto;
             box-sizing: border-box;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            overflow: hidden;
         }
         
         .map-header img {
-            width: 140px;
+            width: 150px;
             height: auto;
             float: right;
             margin-right: 10px;
-            margin-bottom: 10px;
         }
         
         .map-header h1 {
             margin: 0;
             color: #2c5282;
-            font-size: 20px;
+            font-size: 22px;
             overflow: hidden;
         }
         
         .map-header p {
-            margin: 8px 0 0;
+            margin: 5px 0 0;
             color: #4a5568;
-            font-size: 14px;
+            font-size: 15px;
             clear: both;
         }
         
-        /* Avatar flutuante otimizado para tablet */
+        /* Avatar flutuante */
         .avatar-flutuante {
-            position: fixed;
-            bottom: 100px;
-            left: 20px;
-            width: min(120px, 20vw);
-            height: auto;
-            z-index: 9999;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            position: fixed; /* Elemento fixo na tela, não rola com a página */
+            bottom: 80px;  /* 80px afastado da parte inferior da tela */
+            left: 10vw;  /* 10% da largura da tela afastado da esquerda */
+            width: 15vw; /* 15% da largura da tela */
+            height: auto; /* Altura automática, mantém proporção */
+            z-index: 9999; /* Camada muito alta (fica acima de quase tudo) */
+            transform: translateX(300px);
         }
         
-        /* Barra de logos otimizada para tablet */
+        /* Barra de logos */
         .logo-bar {
             background: white;
-            height: 2.5cm;
+            height: 2cm;
             width: 100vw;
-            padding: 0 15px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+        }
+        
+        .logos-flutuantes {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -233,89 +203,9 @@
         }
         
         .logo-bar img {
-            height: 70%;
+            height: 80%;
             width: auto;
             display: block;
-            max-width: 80%;
-        }
-        
-        .logo-text {
-            position: absolute;
-            left: 15px;
-            width: auto;
-            max-width: 40%;
-            text-align: left;
-            padding: 5px;
-            font-size: 10px;
-            line-height: 1.3;
-            color: #666;
-        }
-        
-        /* Media queries para diferentes orientações e tamanhos */
-        @media (max-height: 700px) {
-            .avatar-flutuante {
-                width: min(100px, 15vw);
-                bottom: 90px;
-            }
-            
-            .map-header {
-                padding: 15px;
-                max-width: min(350px, 65vw);
-            }
-            
-            .map-header img {
-                width: 120px;
-            }
-        }
-        
-        @media (orientation: portrait) {
-            .map-header {
-                max-width: 85vw;
-            }
-            
-            #sidebar.open {
-                width: 90vw;
-            }
-        }
-        
-        /* Melhorias de acessibilidade para toque */
-        .leaflet-marker-icon {
-            cursor: pointer;
-        }
-        
-        .leaflet-popup-content {
-            font-size: 16px;
-        }
-        
-        /* Prevenir seleção de texto em elementos interativos */
-        .leaflet-container, .map-header, #sidebar, .avatar-flutuante {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        /* Melhorar responsividade do texto */
-        @media (max-width: 768px) {
-            .project-info h3 {
-                font-size: 16px;
-            }
-            
-            .project-info p {
-                font-size: 14px;
-            }
-            
-            .group-header {
-                font-size: 18px;
-            }
-            
-            .map-header h1 {
-                font-size: 18px;
-            }
-            
-            .map-header p {
-                font-size: 13px;
-            }
         }
     </style>
 </head>
@@ -324,20 +214,20 @@
     <div id="container">
         <!-- Cabeçalho do mapa -->
         <div class="map-header">
-            <h1 style="margin-bottom: 1.2em;"></h1> 
-            <img src="LogoSisAssistiva.png" alt="Logo SisAssistiva" class="header-logo" style="margin-bottom: 1.5em;">
+            <h1 style="margin-bottom: 1.5em;"></h1> 
+            <img src="LogoSisAssistiva.png" alt="Logo SisAssistiva" class="header-logo" style="margin-bottom: 2em;">
             
-            <p style="color: black; margin-bottom: 1.2em; line-height: 1.5;">
+            <p style="color: black; margin-bottom: 1.5em; line-height: 1.6;">
                 <b>SISTEMA NACIONAL DE LABORATÓRIOS DE TECNOLOGIA ASSISTIVA</b>
             </p>
             
-            <p style="text-align: justify; color: black; line-height: 1.6; margin-bottom: 2em;">
+            <p style="text-align: justify; color: black; line-height: 1.8; margin-bottom: 3em;">
                 O SisAssistiva é uma iniciativa do MCTI, estruturado por REDES de laboratórios multiusuários, por meio
                 da gestão e articulação do Laboratório Integrador SEDES/MCTI – UFU (SisLAB), com o objetivo de promover pesquisa, desenvolvimento, formação de capital humano, serviços tecnológicos, empreendedorismo e inovação em Tecnologia 
                 Assistiva (TA), visando o desenvolvimento de métodos, processos e produtos assistivos.
             </p>
             
-            <div style="text-align: right; color: #666; font-size: 0.8em; line-height: 1.4; border-top: 1px solid #eee; padding-top: 0.8em; margin-top: 1.5em;">
+            <div style="text-align: right; color: #666; font-size: 0.85em; line-height: 1.4; border-top: 1px solid #eee; padding-top: 1em; margin-top: 2em;">
                 <!-- Espaço reservado para informações adicionais -->
             </div>
         </div>
@@ -347,7 +237,7 @@
         
         <!-- Sidebar (inicialmente oculta) -->
         <div id="sidebar">
-            <button id="close-sidebar" title="Fechar painel" aria-label="Fechar painel lateral">&times;</button>
+            <button id="close-sidebar" title="Fechar painel">&times;</button>
             <div id="sidebar-content"></div>
         </div>
     </div>
@@ -356,12 +246,12 @@
     <img src="avatar_2at2.png" alt="Avatar Flutuante" class="avatar-flutuante">
 
     <!-- Barra de logos -->
-    <div class="logo-bar">
-        <div class="logo-text">
+    <div class="logo-bar logos-flutuantes">
+        <div style="position: absolute; left: 10px; width: 7cm; text-align: left; padding: 5px; font-size: 10px; line-height: 1.3;">
             <p style="margin: 0;">Mapa desenvolvido por: Denize Vilela Novais</p>
             <p style="margin: 0;">Revisão conteúdo e funcionalidades: Letícia Garcez, Cleudmar Araújo, Dayane Carolina, Gabriela Menegaz, Daniel Florez e José Eduardo Neto</p>
         </div>
-        <img src="logos_para_mapa.png" alt="Logos das instituições">
+        <img src="logos_para_mapa.png" alt="Logos">
     </div>
 
     <!-- Scripts -->
@@ -371,35 +261,11 @@
     <script src="https://unpkg.com/leaflet-ajax@2.1.0/dist/leaflet.ajax.min.js"></script>
     
     <script>
-        // Prevenir zoom com duplo toque no mapa (exceto para zoom do Leaflet)
-        document.addEventListener('touchstart', function(event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        }, { passive: false });
-
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
-
         /**
          * INICIALIZAÇÃO DO MAPA
          */
         // Cria o mapa centralizado no Brasil
-        const map = L.map('map', {
-            zoomControl: true,
-            tap: false, // Melhora a responsividade do toque
-            touchZoom: true,
-            scrollWheelZoom: false, // Desativa zoom com scroll em tablets
-            doubleClickZoom: true,
-            boxZoom: false,
-            keyboard: false
-        }).setView([-15.7801, -47.9292], 4);
+        const map = L.map('map').setView([-15.7801, -47.9292], 4);
 
         // Adiciona a camada base do OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -452,28 +318,19 @@
             if (viewportWidth < 1000) {
                 sidebar.style.width = '90vw';
             } else {
-                sidebar.style.width = 'min(700px, 80vw)';
+                sidebar.style.width = '1000px';
             }
         }
         
         // Fecha a sidebar
         function closeSidebarFunc() {
-            sidebar.classList.remove('open');
             sidebar.style.width = '0';
             map.invalidateSize();
         }
         
-        // Event listeners otimizados para touch
+        // Event listeners
         closeSidebar.addEventListener('click', closeSidebarFunc);
-        closeSidebar.addEventListener('touchend', closeSidebarFunc);
-        
-        // Fechar sidebar ao tocar no mapa
-        map.on('click', function(e) {
-            // Só fecha se não for um clique em um marcador
-            if (!e.originalEvent.target.closest('.leaflet-marker-icon')) {
-                closeSidebarFunc();
-            }
-        });
+        map.on('click', closeSidebarFunc);
 
         /**
          * FUNÇÕES PARA CRIAÇÃO DE ELEMENTOS VISUAIS
@@ -487,9 +344,8 @@
             const img = document.createElement('img');
             img.src = 'pinLeticia_transparente.png';
             img.alt = 'Marker';
-            img.style.width = '50px';
-            img.style.height = '50px';
-            img.style.pointerEvents = 'none';
+            img.style.width = '40px';
+            img.style.height = '40px';
             
             div.appendChild(img);
             
@@ -556,10 +412,10 @@
             const markerElement = createMarkerElement(projetosNoLocal.length);
             const customIcon = L.divIcon({
                 html: markerElement.outerHTML,
-                className: 'custom-marker',
-                iconSize: [50, 50],
-                iconAnchor: [25, 50],
-                popupAnchor: [0, -45]
+                className: '',
+                iconSize: [40, 40],
+                iconAnchor: [20, 40],
+                popupAnchor: [0, -40]
             });
             
             // Adiciona marcador ao mapa
@@ -571,25 +427,6 @@
             marker.on('click', () => {
                 openSidebar(createGroupedSidebarContent(projetosNoLocal));
             });
-            
-            // Também responde a eventos de toque
-            marker.on('touchend', () => {
-                openSidebar(createGroupedSidebarContent(projetosNoLocal));
-            });
-        });
-
-        // Ajusta o tamanho do mapa após o carregamento completo
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                map.invalidateSize();
-            }, 100);
-        });
-
-        // Ajusta o mapa quando a orientação muda
-        window.addEventListener('orientationchange', function() {
-            setTimeout(function() {
-                map.invalidateSize();
-            }, 300);
         });
     </script>
 </body>
