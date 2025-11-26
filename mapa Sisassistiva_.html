@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Projetos de Tecnologia Assistiva no Brasil - SisAssistiva</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#2c5282">
+    
+    <!-- Biblioteca Leaflet para mapas -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <style>
+        /* Estilos gerais otimizados para tablet */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            touch-action: manipulation;
+            background-color: #f5f5f5;
+        }
+        
+        /* Container principal flexível */
+        #container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        
+        /* Estilo do mapa (ocupa todo o espaço disponível) */
+        #map {
+            flex: 1;
+            height: 100%;
+            width: 100%;
+        }
+        
+        /* Sidebar - painel lateral otimizado para tablet */
+        #sidebar {
+            width: 0;
+            height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            transition: width 0.3s ease;
+            background: white;
+            box-shadow: -3px 0 15px rgba(0,0,0,0.2);
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index: 1000;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Classe para sidebar aberta */
+        #sidebar.open {
+            width: min(700px, 80vw);
+        }
+        
+        /* Conteúdo da sidebar */
+        #sidebar-content {
+            padding: 20px;
+            padding-bottom: 2cm;
+            width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            hyphens: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Botão de fechar sidebar otimizado para toque */
+        #close-sidebar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 35px;
+            color: #666;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+        
+        #close-sidebar:hover, #close-sidebar:active {
+            color: #333;
+            background: white;
+        }
+        
+        /* Contador de marcadores */
+        .marker-counter {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #C249AD;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px solid white;
+            z-index: 1001;
+        }
+        
+        /* Estilos para informações dos projetos */
+        .project-info {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #C249AD;
+        }
+        
+        .project-info h3 {
+            margin-top: 0;
+            color: #2c5282;
+            padding-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .project-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .project-info b {
+            color: #2c5282;
+        }
+        
+        /* Grupos de projetos */
+        .project-group {
+            margin-bottom: 25px;
+        }
+        
+        .project-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .group-header {
+            color: #2c5282;
+            font-weight: bold;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+            font-size: 20px;
+        }
+        
+        /* Cabeçalho do mapa otimizado para tablet */
+        .map-header {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            max-width: min(400px, 70vw);
+            width: auto;
+            box-sizing: border-box;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .map-header img {
+            width: 140px;
+            height: auto;
+            float: right;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .map-header h1 {
+            margin: 0;
+            color: #2c5282;
+            font-size: 20px;
+            overflow: hidden;
+        }
+        
+        .map-header p {
+            margin: 8px 0 0;
+            color: #4a5568;
+            font-size: 14px;
+            clear: both;
+        }
+        
+        /* Avatar flutuante otimizado para tablet */
+        .avatar-flutuante {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            width: min(120px, 20vw);
+            height: auto;
+            z-index: 9999;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        
+        /* Barra de logos otimizada para tablet */
+        .logo-bar {
+            background: white;
+            height: 2.5cm;
+            width: 100vw;
+            padding: 0 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 9998;
+        }
+        
+        .logo-bar img {
+            height: 70%;
+            width: auto;
+            display: block;
+            max-width: 80%;
+        }
+        
+        .logo-text {
+            position: absolute;
+            left: 15px;
+            width: auto;
+            max-width: 40%;
+            text-align: left;
+            padding: 5px;
+            font-size: 10px;
+            line-height: 1.3;
+            color: #666;
+        }
+        
+        /* Media queries para diferentes orientações e tamanhos */
+        @media (max-height: 700px) {
+            .avatar-flutuante {
+                width: min(100px, 15vw);
+                bottom: 90px;
+            }
+            
+            .map-header {
+                padding: 15px;
+                max-width: min(350px, 65vw);
+            }
+            
+            .map-header img {
+                width: 120px;
+            }
+        }
+        
+        @media (orientation: portrait) {
+            .map-header {
+                max-width: 85vw;
+            }
+            
+            #sidebar.open {
+                width: 90vw;
+            }
+        }
+        
+        /* Melhorias de acessibilidade para toque */
+        .leaflet-marker-icon {
+            cursor: pointer;
+        }
+        
+        .leaflet-popup-content {
+            font-size: 16px;
+        }
+        
+        /* Prevenir seleção de texto em elementos interativos */
+        .leaflet-container, .map-header, #sidebar, .avatar-flutuante {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Melhorar responsividade do texto */
+        @media (max-width: 768px) {
+            .project-info h3 {
+                font-size: 16px;
+            }
+            
+            .project-info p {
+                font-size: 14px;
+            }
+            
+            .group-header {
+                font-size: 18px;
+            }
+            
+            .map-header h1 {
+                font-size: 18px;
+            }
+            
+            .map-header p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Container principal -->
+    <div id="container">
+        <!-- Cabeçalho do mapa -->
+        <div class="map-header">
+            <h1 style="margin-bottom: 1.2em;"></h1> 
+            <img src="LogoSisAssistiva.png" alt="Logo SisAssistiva" class="header-logo" style="margin-bottom: 1.5em;">
+            
+            <p style="color: black; margin-bottom: 1.2em; line-height: 1.5;">
+                <b>SISTEMA NACIONAL DE LABORATÓRIOS DE TECNOLOGIA ASSISTIVA</b>
+            </p>
+            
+            <p style="text-align: justify; color: black; line-height: 1.6; margin-bottom: 2em;">
+                O SisAssistiva é uma iniciativa do MCTI, estruturado por REDES de laboratórios multiusuários, por meio
+                da gestão e articulação do Laboratório Integrador SEDES/MCTI – UFU (SisLAB), com o objetivo de promover pesquisa, desenvolvimento, formação de capital humano, serviços tecnológicos, empreendedorismo e inovação em Tecnologia 
+                Assistiva (TA), visando o desenvolvimento de métodos, processos e produtos assistivos.
+            </p>
+            
+            <div style="text-align: right; color: #666; font-size: 0.8em; line-height: 1.4; border-top: 1px solid #eee; padding-top: 0.8em; margin-top: 1.5em;">
+                <!-- Espaço reservado para informações adicionais -->
+            </div>
+        </div>
+        
+        <!-- Mapa principal -->
+        <div id="map"></div>
+        
+        <!-- Sidebar (inicialmente oculta) -->
+        <div id="sidebar">
+            <button id="close-sidebar" title="Fechar painel" aria-label="Fechar painel lateral">&times;</button>
+            <div id="sidebar-content"></div>
+        </div>
+    </div>
+
+    <!-- Avatar flutuante -->
+    <img src="avatar_2at2.png" alt="Avatar Flutuante" class="avatar-flutuante">
+
+    <!-- Barra de logos -->
+    <div class="logo-bar">
+        <div class="logo-text">
+            <p style="margin: 0;">Mapa desenvolvido por: Denize Vilela Novais</p>
+            <p style="margin: 0;">Revisão conteúdo e funcionalidades: Letícia Garcez, Cleudmar Araújo, Dayane Carolina, Gabriela Menegaz, Daniel Florez e José Eduardo Neto</p>
+        </div>
+        <img src="logos_para_mapa.png" alt="Logos das instituições">
+    </div>
+
+    <!-- Scripts -->
+    <script src="projetos.js"></script>
+    <script src="tabela-estados.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-ajax@2.1.0/dist/leaflet.ajax.min.js"></script>
+    
+    <script>
+        // Prevenir zoom com duplo toque no mapa (exceto para zoom do Leaflet)
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        /**
+         * INICIALIZAÇÃO DO MAPA
+         */
+        // Cria o mapa centralizado no Brasil
+        const map = L.map('map', {
+            zoomControl: true,
+            tap: false, // Melhora a responsividade do toque
+            touchZoom: true,
+            scrollWheelZoom: false, // Desativa zoom com scroll em tablets
+            doubleClickZoom: true,
+            boxZoom: false,
+            keyboard: false
+        }).setView([-15.7801, -47.9292], 4);
+
+        // Adiciona a camada base do OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Adiciona a borda do Brasil via GeoJSON
+        fetch('https://raw.githubusercontent.com/fidelisrafael/geojson-brasil/master/brasil.json')
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: '#0058A4',
+                        weight: 3,
+                        opacity: 1,
+                        fillOpacity: 0.1,
+                        fillColor: '#ebf8ff'
+                    }
+                }).addTo(map);
+            })
+            .catch(error => console.error('Erro ao carregar GeoJSON:', error));
+
+        // Configura duplo clique para zoom no Brasil inteiro
+        map.on('dblclick', function(e) {
+            map.fitBounds([
+                [-31.5036, -52.9291],  // sudoeste
+                [4.9158, -60.2929]     // nordeste
+            ], {
+                padding: [20, 20],
+                animate: true
+            });
+            e.originalEvent.preventDefault();
+        });
+
+        /**
+         * GERENCIAMENTO DA SIDEBAR
+         */
+        const sidebar = document.getElementById('sidebar');
+        const sidebarContent = document.getElementById('sidebar-content');
+        const closeSidebar = document.getElementById('close-sidebar');
+        
+        // Abre a sidebar com conteúdo específico
+        function openSidebar(content) {
+            sidebarContent.innerHTML = content;
+            sidebar.classList.add('open');
+            map.invalidateSize();
+            
+            // Ajuste responsivo da largura
+            const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            if (viewportWidth < 1000) {
+                sidebar.style.width = '90vw';
+            } else {
+                sidebar.style.width = 'min(700px, 80vw)';
+            }
+        }
+        
+        // Fecha a sidebar
+        function closeSidebarFunc() {
+            sidebar.classList.remove('open');
+            sidebar.style.width = '0';
+            map.invalidateSize();
+        }
+        
+        // Event listeners otimizados para touch
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+        closeSidebar.addEventListener('touchend', closeSidebarFunc);
+        
+        // Fechar sidebar ao tocar no mapa
+        map.on('click', function(e) {
+            // Só fecha se não for um clique em um marcador
+            if (!e.originalEvent.target.closest('.leaflet-marker-icon')) {
+                closeSidebarFunc();
+            }
+        });
+
+        /**
+         * FUNÇÕES PARA CRIAÇÃO DE ELEMENTOS VISUAIS
+         */
+        // Cria elemento HTML para o marcador
+        function createMarkerElement(count) {
+            const div = document.createElement('div');
+            div.style.position = 'relative';
+            div.style.display = 'inline-block';
+            
+            const img = document.createElement('img');
+            img.src = 'pinLeticia_transparente.png';
+            img.alt = 'Marker';
+            img.style.width = '50px';
+            img.style.height = '50px';
+            img.style.pointerEvents = 'none';
+            
+            div.appendChild(img);
+            
+            // Adiciona contador se houver múltiplos projetos
+            if (count > 1) {
+                const counterDiv = document.createElement('div');
+                counterDiv.className = 'marker-counter';
+                counterDiv.textContent = count;
+                div.appendChild(counterDiv);
+            }
+            
+            return div;
+        }
+
+        // Cria conteúdo agrupado por cidade para a sidebar
+        function createGroupedSidebarContent(projetos) {
+            let html = '';
+            
+            // Agrupa projetos por cidade
+            const grupos = {};
+            projetos.forEach(projeto => {
+                if (!grupos[projeto.cidade]) {
+                    grupos[projeto.cidade] = [];
+                }
+                grupos[projeto.cidade].push(projeto);
+            });
+            
+            // Gera HTML para cada grupo
+            Object.keys(grupos).forEach(cidade => {
+                const projetosNaCidade = grupos[cidade];
+                
+                html += `<div class="project-group">`;
+                html += `<div class="group-header">${cidade} (${projetosNaCidade.length} projeto${projetosNaCidade.length > 1 ? 's' : ''})</div>`;
+                
+                projetosNaCidade.forEach(projeto => {
+                    html += projeto.info;
+                });
+                
+                html += `</div>`;
+            });
+            
+            return html;
+        }
+
+        /**
+         * ADICIONA MARCADORES AO MAPA
+         */
+        // Agrupa projetos por localização
+        const gruposPorLocalizacao = {};
+        projetos.forEach(projeto => {
+            const key = projeto.coordenadas.join(',');
+            if (!gruposPorLocalizacao[key]) {
+                gruposPorLocalizacao[key] = [];
+            }
+            gruposPorLocalizacao[key].push(projeto);
+        });
+
+        // Cria marcadores para cada grupo de projetos
+        Object.keys(gruposPorLocalizacao).forEach(key => {
+            const projetosNoLocal = gruposPorLocalizacao[key];
+            const coordenadas = projetosNoLocal[0].coordenadas;
+            
+            // Cria ícone personalizado
+            const markerElement = createMarkerElement(projetosNoLocal.length);
+            const customIcon = L.divIcon({
+                html: markerElement.outerHTML,
+                className: 'custom-marker',
+                iconSize: [50, 50],
+                iconAnchor: [25, 50],
+                popupAnchor: [0, -45]
+            });
+            
+            // Adiciona marcador ao mapa
+            const marker = L.marker(coordenadas, {
+                icon: customIcon
+            }).addTo(map);
+            
+            // Configura clique para abrir sidebar
+            marker.on('click', () => {
+                openSidebar(createGroupedSidebarContent(projetosNoLocal));
+            });
+            
+            // Também responde a eventos de toque
+            marker.on('touchend', () => {
+                openSidebar(createGroupedSidebarContent(projetosNoLocal));
+            });
+        });
+
+        // Ajusta o tamanho do mapa após o carregamento completo
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 100);
+        });
+
+        // Ajusta o mapa quando a orientação muda
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 300);
+        });
+    </script>
+</body>
+</html>
