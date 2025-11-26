@@ -45,17 +45,18 @@
         
         /* Classe para sidebar aberta */
         #sidebar.open {
-            width: 700px;
-            max-width: 20vw;
+            width: min(700px, 85vw, 60vh);
+            max-width: none;
         }
         
         /* Conteúdo da sidebar */
         #sidebar-content {
-            padding-bottom: 2cm;   /* Adiciona espaço para a barra de logos */         
+            padding-bottom: max(2cm, 5vh);   /* Adiciona espaço para a barra de logos */         
             width: 100%;
             box-sizing: border-box;
             word-wrap: break-word;
             hyphens: auto;
+            font-size: clamp(14px, 2vw, 16px);
        }
         
         /* Botão de fechar sidebar */
