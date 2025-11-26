@@ -1,0 +1,204 @@
+ body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        /* Container principal flexível */
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        /* Estilo do mapa (ocupa todo o espaço disponível) */
+        #map {
+            flex: 1;
+            height: 100%;
+        }
+        
+        /* Sidebar - painel lateral */
+        #sidebar {
+            width: 0;
+            height: calc(100vh - 2cm);  /* Subtrai a altura da barra de logos */
+            position: fixed; /* Fixa na tela */
+            right: 0; /* Ancora no lado direito */
+            top: 0;
+            transition: width 0.3s;
+            background: white;
+            box-shadow: -3px 0 10px rgba(0,0,0,0.1);
+            overflow-x: hidden;
+            overflow-y: auto; /* Habilita rolagem vertical */
+            z-index: 1000;
+        }
+        
+        /* Classe para sidebar aberta */
+        #sidebar.open {
+            width: min(700px, 85vw, 60vh);
+            max-width: none;
+        }
+        
+        /* Conteúdo da sidebar */
+        #sidebar-content {
+            padding-bottom: max(2cm, 5vh);   /* Adiciona espaço para a barra de logos */         
+            width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            hyphens: auto;
+            font-size: clamp(14px, 2vw, 16px);
+       }
+        
+        /* Botão de fechar sidebar */
+        #close-sidebar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 35px;
+            color: #666;
+            cursor: pointer;
+        }
+        
+        #close-sidebar:hover {
+            color: #333;
+        }
+        
+        /* Contador de marcadores */
+        .marker-counter {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #C249AD;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            border: 2px solid white;
+            z-index: 1001;
+        }
+        
+        /* Estilos para informações dos projetos */
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            margin-top: 0;
+            color: #2c5282;
+            border-bottom: 2px solid #C249AD;
+            padding-bottom: 10px;
+        }
+        
+        .project-info p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .project-info b {
+            color: #2c5282;
+        }
+        
+        /* Grupos de projetos */
+        .project-group {
+            margin-bottom: 25px;
+        }
+        
+        .project-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .group-header {
+            color: #2c5282;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Cabeçalho do mapa */
+        .map-header {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-width: 200px;
+            max-width: 25vw;
+            width: auto;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        
+        .map-header img {
+            width: 150px;
+            height: auto;
+            float: right;
+            margin-right: 10px;
+        }
+        
+        .map-header h1 {
+            margin: 0;
+            color: #2c5282;
+            font-size: 22px;
+            overflow: hidden;
+        }
+        
+        .map-header p {
+            margin: 5px 0 0;
+            color: #4a5568;
+            font-size: 15px;
+            clear: both;
+        }
+        
+        /* Avatar flutuante */
+        .avatar-flutuante {
+            position: fixed; /* Elemento fixo na tela, não rola com a página */
+            bottom: 80px;  /* 80px afastado da parte inferior da tela */
+            left: 10vw;  /* 10% da largura da tela afastado da esquerda */
+            width: 15vw; /* 15% da largura da tela */
+            height: auto; /* Altura automática, mantém proporção */
+            z-index: 9999; /* Camada muito alta (fica acima de quase tudo) */
+            transform: translateX(300px);
+        }
+        @media (max-width: 600px) {
+            .avatar-flutuante {
+                left: 5vw;  /* Em telas pequenas, afasta menos da esquerda */
+                width: 25vw; /* Em telas pequenas, aumenta a largura */
+            }
+        }
+        
+        /* Barra de logos */
+        .logo-bar {
+            background: white;
+            height: 2cm;
+            width: 100vw;
+            padding: 0;
+            box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logos-flutuantes {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 9998;
+        }
+        
+        .logo-bar img {
+            height: 80%;
+            width: auto;
+            display: block;
+        }
