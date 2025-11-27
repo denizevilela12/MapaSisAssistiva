@@ -18,34 +18,21 @@
         }
         
         /* Sidebar - painel lateral */
-        #sidebar {
-            width: 0;
-            height: calc(100vh - 2cm);  /* Subtrai a altura da barra de logos */
-            position: fixed; /* Fixa na tela */
-            right: 0; /* Ancora no lado direito */
-            top: 0;
-            transition: width 0.3s;
-            background: white;
-            box-shadow: -3px 0 10px rgba(0,0,0,0.1);
-            overflow-x: hidden;
-            overflow-y: auto; /* Habilita rolagem vertical */
-            z-index: 1000;
-        }
+       
         
         /* Classe para sidebar aberta */
         #sidebar.open {
-            width: min(700px, 85vw, 60vh);
-            max-width: none;
+            width: 700px;
+            max-width: 20vw;
         }
         
         /* Conteúdo da sidebar */
         #sidebar-content {
-            padding-bottom: max(2cm, 5vh);   /* Adiciona espaço para a barra de logos */         
+            padding-bottom: 2cm;   /* Adiciona espaço para a barra de logos */         
             width: 100%;
             box-sizing: border-box;
             word-wrap: break-word;
             hyphens: auto;
-            font-size: clamp(14px, 2vw, 16px);
        }
         
         /* Botão de fechar sidebar */
@@ -168,12 +155,6 @@
             height: auto; /* Altura automática, mantém proporção */
             z-index: 9999; /* Camada muito alta (fica acima de quase tudo) */
             transform: translateX(300px);
-        }
-        @media (max-width: 600px) {
-            .avatar-flutuante {
-                left: 5vw;  /* Em telas pequenas, afasta menos da esquerda */
-                width: 25vw; /* Em telas pequenas, aumenta a largura */
-            }
         }
         
         /* Barra de logos */
