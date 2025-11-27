@@ -98,7 +98,15 @@ function adicionarTabelaEstados() {
             overflow-y: auto;
             transition: all 0.3s ease;
         }
-        
+         @media (min-width: 1600px) {
+            #tabela-container {
+             position: fixed;
+                top: 0px;
+                right: 20px;
+                max-height: 70vh;
+            }
+        }
+
         #tabela-container.hidden {
             opacity: 0;
             transform: translateX(20px);
@@ -147,13 +155,13 @@ function adicionarTabelaEstados() {
         }
     </style>
     `;
-    
+
     document.body.insertAdjacentHTML('beforeend', tabelaHTML);
 }
 
 // Adiciona funcionalidade para esconder a tabela quando um marcador é clicado
 function configurarComportamentoTabela() {
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         const tabela = document.getElementById('tabela-container');
         if (e.target.closest('.leaflet-marker-icon')) {
             tabela.classList.add('hidden');
@@ -164,7 +172,7 @@ function configurarComportamentoTabela() {
 }
 
 // Espera o DOM carregar para adicionar a tabela
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     adicionarTabelaEstados();
     configurarComportamentoTabela();
 });

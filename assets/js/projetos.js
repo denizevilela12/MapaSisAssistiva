@@ -59,8 +59,8 @@ const projetos = [
         imagem: "imagem_dreanns.jpg",
         titulo: "Dispositivos de reabilitação e assistência em neurociência e neurotecnologias",
         instituicao: "Universidade Estadual de Campinas",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Gabriela Castellano",
+        resumo: 'O objetivo geral deste projeto é desenvolver tecnologias assistivas e de reabilitação voltadas a pessoas com deficiências motoras e cognitivas, com foco em, mas não restrito a, pacientes de acidente vascular cerebral (AVC). As linhas de desenvolvimento são: 1) Desenvolvimento de cadeira de rodas, próteses de mão, órteses de mão e pernas robóticas, sistemas protéticos com controle mioelétrico; 2) Desenvolvimento de aplicativos de reabilitação baseados em realidade virtual (RV) e aumentada (RA), imersivos e não-imersivos; 3) Desenvolvimento de protocolos de reabilitação envolvendo os aplicativos de RV e RA acoplados a técnicas de neuromodulação (neurofeedback e estimulação transcraniana); 4) Desenvolvimento de interfaces homem-máquina (entre elas interfaces cérebro-máquina) e wearables utilizando técnicas avançadas de processamento de sinais e aprendizado de máquina, miografia de força, espectroscopia no infravermelho próximo, eletromiografia em alta densidade e sistemas embarcados. Alguns protótipos já estão prontos em todas as linhas citadas.',
         cidade: "Campinas (SP)",
         coordenadas: [-22.8149, -47.0669],
         executora: "Universidade Estadual de Campinas"
@@ -69,11 +69,11 @@ const projetos = [
     // Curitiba (PR)
     criarProjeto({
         sigla: "TecnoAging",
-        imagem: "imagem_tecnoaging.jpg",
+        imagem: "imagem_tecnoaging.png",
         titulo: "Tecnologia assistiva na avaliação clínico-funcional integrada e prescrição de exercícios para pessoas idosas usuárias do SUS",
         instituicao: "Universidade Federal do Paraná",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "André Luiz Felix Rodacki",
+        resumo: 'A Organização Mundial da Saúde tem incentivado a revisão das políticas públicas de saúde para prevenir e reduzir as incapacidades em idosos, com foco na autonomia e qualidade de vida. Nesse contexto, o projeto busca diagnosticar e intervir sobre fatores como fragilidade, percepção de fadiga, aspectos cognitivos, qualidade de vida e risco de queda, utilizando questionários validados convertidos para formato eletrônico. O desempenho funcional dos idosos será avaliado por meio de testes físicos e sensores embutidos em smartphones, permitindo a mensuração precisa e o acompanhamento sustentável, via Sistema Único de Saúde. Os dados serão armazenados em nuvem, criando um banco de dados que pode informar políticas públicas e promover equidade em saúde. A inteligência artificial será usada para identificar indicadores clínico-funcionais associados a desfechos importantes, como fragilidade e quedas, ajudando na formulação de estratégias de intervenção. Além disso, o projeto contará com um aplicativo de atividades físicas domiciliares com estratégias de "gamificação", monitorando os efeitos das intervenções no bem-estar clínico-funcional dos idosos.',
         cidade: "Curitiba (PR)",
         coordenadas: [-25.4504, -49.2325],
         executora: "Universidade Federal do Paraná"
@@ -112,8 +112,8 @@ A tabela do SUS para órteses/próteses não é atualizada desde 2010, tornando 
         imagem: "imagem_amputsus.jpg",
         titulo: "Recurso tecnológico inovador para soluções protéticas em amputados de membros inferiores usuários do SUS: atualização e estruturação da prescrição",
         instituicao: "Fundação Universidade do Estado de Santa Catarina",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Soraia Cristina Tonon da Luz",
+        resumo: 'Segundo o Plano Nacional de Tecnologia Assistiva (PNTA, 2021), o Brasil apresenta um alto número de pessoas com deficiência, com 75.302 amputações registradas em 2021, sendo a maioria de membros inferiores. Este projeto visa desenvolver soluções inovadoras em protetização, com a criação do aplicativo AMPUTSUS e a implantação de uma oficina protética no Laboratório de Biomecânica, para otimizar a prescrição e adaptação de próteses. O foco é melhorar a adesão ao uso das próteses por meio de um processo personalizado, considerando fatores como mobilidade, idade e doenças associadas. Além disso, busca-se modernizar a tabela OPM/SUS e oferecer um atendimento mais eficiente e acessível. A pesquisa também contempla comparações com modelos de reabilitação e prescrição de outros países, como a Espanha, para aplicar melhorias no sistema de saúde brasileiro.',
         cidade: "Florianópolis (SC)",
         coordenadas: [-27.5925, -48.5497],
         executora: "Fundação Universidade do Estado de Santa Catarina"
@@ -122,7 +122,7 @@ A tabela do SUS para órteses/próteses não é atualizada desde 2010, tornando 
     // Goiânia (GO)
     criarProjeto({
         sigla: "CRM-IOT",
-        imagem: "imagem_crm_iot.png",
+        imagem: "imagem_crm_iot.jpg",
         titulo: "Cadeira de rodas motorizada com telemetria por internet das coisas (IOT)",
         instituicao: "Instituto Federal de Educação Ciência e Tecnologia de Goiás",
         coordenacao: "Josemar Alves dos Santos Junior",
@@ -142,8 +142,8 @@ Objetivos adicionais: Expandir a infraestrutura do Campus para tecnologias assis
         imagem: "imagem_dua_games.jpg",
         titulo: "Ateliês de criação colaborativa de tecnologias assistivas digitais: games para o desenvolvimento intelectual, cognitivo e socioambiental",
         instituicao: "Fundação Universidade do Vale do Itajaí",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Adriana Gomes Alves",
+        resumo: 'A proposta busca desenvolver jogos digitais acessíveis, baseados no desenho universal e na criação colaborativa, para promover o desenvolvimento intelectual, cognitivo e socioemocional de crianças e adolescentes com deficiência (intelectual, autismo e múltipla), incentivando autonomia, independência e inclusão social. O destaque está na metodologia baseada no framework “Eu fiz meu Game”, cujo foco recai sobre o processo criativo que permite o desenvolvimento das crianças, caracterizando a tecnologia assistiva como processo, mais do que como produto final (jogos). Para apoiar essa abordagem, foi criado o LCDH – Laboratório Multiusuário de Criatividade e Desenvolvimento Humano – destinado à realização de ateliês de criação de jogos com crianças, e ampliado o ULAB – Laboratório Multiusuário de Design Universal – para o desenvolvimento dos jogos. O projeto organiza-se em nove metas voltadas à pesquisa, à formação de profissionais, à inovação tecnológica e à prestação de serviços em tecnologia assistiva. Também visa assegurar o protagonismo das crianças e adolescentes no universo digital por meio do Design Based Research e do Design Participativo, integrando saberes das áreas de Educação, Saúde, Computação e Design.',
         cidade: "Itajaí (SC)",
         coordenadas: [-26.9024, -48.6743],
         executora: "Fundação Universidade do Vale do Itajaí"
@@ -152,7 +152,7 @@ Objetivos adicionais: Expandir a infraestrutura do Campus para tecnologias assis
     // Natal (RN) - Projeto 1
     criarProjeto({
         sigla: "LITA",
-        imagem: "imagem_lita.png",
+        imagem: "imagem_lita.jpg",
         titulo: "Inovação, tecnologia e acessibilidade: soluções e projetos voltados para o desenho universal e a comunicação acessível",
         instituicao: "Universidade Federal do Rio Grande do Norte",
         coordenacao: "Hélio Takashi Maciel de Farias",
@@ -179,7 +179,7 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
     // Natal (RN) - Projeto 2
     criarProjeto({
         sigla: "ReAbLITA",
-        imagem: "imagem_lita.png",
+        imagem: "imagem_reablita.png",
         titulo: "Reablita: rede de laboratórios para o desenvolvimento e validação de tecnologias moveis e acessíveis para a deficiencia auditiva nos ciclos da vida",
         instituicao: "Universidade Federal do Rio Grande do Norte",
         coordenacao: "Sheila Andreoli Balen",
@@ -195,8 +195,8 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
         imagem: "imagem_sensegames.jpg",
         titulo: "Laboratório e-health lab - projeto sensegames - jogos sérios multissensoriais para pessoas com deficiência intelectual, mental, autismo e múltipla",
         instituicao: "Universidade Federal Fluminense",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Débora Christina Muchaluat Saade",
+        resumo: 'O Laboratório e-Health Lab da UFF é dedicado à pesquisa e inovação em saúde digital, com foco em tecnologias assistivas para pessoas com deficiência intelectual, mental, autismo e múltiplas. O objetivo é fomentar parcerias entre pesquisadores das áreas tecnológica e da saúde, criando novas tecnologias e oferecendo um espaço inclusivo para crianças e jovens com essas deficiências, em colaboração com a Casa de Descoberta da UFF. O projeto SenseGames desenvolve jogos multissensoriais, utilizando realidades aumentada e virtual, metaverso, conteúdo 360° e robótica assistiva para promover o desenvolvimento cognitivo, intelectual e socioemocional dessas pessoas.',
         cidade: "Niterói (RJ)",
         coordenadas: [-22.9083, -43.1258],
         executora: "Universidade Federal Fluminense"
@@ -208,8 +208,8 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
         imagem: "imagem_op_mfa.jpg",
         titulo: "Órteses posturais para melhora da mobilidade funcional e autonomia em idosos",
         instituicao: "Pontifícia Universidade Católica do Rio Grande do Sul",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Rafael Reimann Baptista",
+        resumo: 'Este estudo avaliará 100 idosos que utilizarão órteses posturais, com o objetivo de investigar o impacto dessas órteses nos aspectos biomecânicos e nos níveis de atividade física. A hipótese é que as órteses melhorarão a função locomotora e a funcionalidade articular, aumentando a atividade física. Os participantes serão divididos em quatro grupos, usando diferentes tipos de órteses, e avaliados em relação à marcha, biomecânica musculoesquelética e níveis de atividade física, antes e após 16 semanas. Os grupos serão comparados usando a equação de estimativas generalizadas (GEE) com significância de 5%.',
         cidade: "Porto Alegre (RS)",
         coordenadas: [-30.0586, -51.1719],
         executora: "Pontifícia Universidade Católica do Rio Grande do Sul"
@@ -273,8 +273,8 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
         imagem: "imagem_3ducassist.jpg",
         titulo: "Ações integradas para implementação de práticas inovadoras na educação inclusiva: impressão 3D, jardim sensorial e outras tecnologias assistivas",
         instituicao: "Universidade do Estado do Rio de Janeiro",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Eduardo José Lopes Torres",
+        resumo: 'A rede 3DucAssist visa implementar práticas inovadoras na educação inclusiva, como impressão 3D, jardim sensorial e outras tecnologias assistivas. Com a colaboração de nove laboratórios e empresas, sediados na UERJ-RJ e UCDB-MS, as equipes trabalham em programas de pós-graduação nas áreas biológicas, biomédicas, ambientais, tecnológicas e humanas, em parceria com instituições como o Instituto Benjamin Constant e Fiocruz. Serão desenvolvidos materiais didático-pedagógicos adaptados para pessoas com deficiência visual, utilizando alto contraste, Braille e texturas táteis. O projeto também incluirá portfólios e atlas de protótipos virtuais nas áreas de saúde e meio ambiente. Esses materiais visam superar barreiras da deficiência visual, oferecendo novas oportunidades de aprendizado e interação.',
         cidade: "Rio de Janeiro (RJ)",
         coordenadas: [-22.8625, -43.2236],
         executora: "Universidade do Estado do Rio de Janeiro"
@@ -286,9 +286,8 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
         imagem: "imagem_neurosutre.jpg",
         titulo: "Estimulação somatossensitiva periférica por corrente senoidal para supressão do tremor na doença de Parkinson e no tremor essencial",
         instituicao: "Universidade Federal do Rio de Janeiro",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
-        cidade: "Rio de Janeiro (RJ)",
+        coordenacao: "Carlos Julio Tierra Criollo",
+        resumo: 'O projeto NeuroSuTre tem como objetivo o desenvolvimento de uma tecnologia assistiva baseada em estimulação elétrica periférica superficial com corrente senoidal, visando a redução do tremor em pacientes com Doença de Parkinson (DP) e Tremor Essencial (TE). Essa abordagem inovadora se diferencia por utilizar estimulação senoidal, que demonstra maior seletividade na ativação de diferentes tipos de fibras nervosas conforme a frequência do estímulo, o que pode otimizar os efeitos terapêuticos',
         coordenadas: [-22.8625, -43.2236],
         executora: "Universidade Federal do Rio de Janeiro"
     }),
@@ -299,25 +298,25 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
         imagem: "imagem_sivam.jpg",
         titulo: "Técnicas de baixo custo para análise do movimento humano baseadas em inteligência artificial, sensores vestíveis e IOT",
         instituicao: "Universidade Federal do Rio de Janeiro",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Luciano Luporini Menegaldo",
+        resumo: "O projeto propõe o desenvolvimento de um sistema de baixo custo, portátil e acessível para medição e classificação automática do movimento da marcha de pacientes com doenças neurológicas, como acidente vascular cerebral e paralisia cerebral. Chamado de Sistema Inteligente Vestível de Avaliação do Movimento (SIVAM), esse sistema permitirá mensurar os ângulos articulares por meio da integração entre um Raspberry Pi com sete sensores inerciais posicionados nas regiões de pelve, coxa, perna e pé. Os dados do SIVAM serão coletados concomitantemente com a captura de movimento pelo sistema de oito câmeras optoeletrônicas da Vicon. As variáveis mais sensíveis ao diagnóstico da marcha serão consideradas na geração de modelos e no treinamento de algoritmos para um software de classificação automática da marcha por meio de inteligência artificial e comunicação por internet das coisas (IoT). Assim, o SIVAM será um sistema capaz de medir e classificar automaticamente os padrões de locomoção dos pacientes viabilizando diagnósticos e acompanhamentos clínicos mais precisos para o uso rotineiro na prática clínica. Além disso, a tecnologia poderá futuramente ser adaptada para outras condições clínicas.",
         cidade: "Rio de Janeiro (RJ)",
         coordenadas: [-22.8625, -43.2236],
         executora: "Universidade Federal do Rio de Janeiro"
     }),
 
     // Rio de Janeiro (RJ) - Projeto 4
-    criarProjeto({
-        sigla: "AssistEMT",
-        imagem: "imagem_assistemt.jpg",
-        titulo: "Efeitos da estimulação transcraniana não-invasiva na funcionalidade de membro superior após o acidente vascular cerebral e sua associação à COVID-19",
-        instituicao: "Universidade Federal do Rio de Janeiro",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
-        cidade: "Rio de Janeiro (RJ)",
-        coordenadas: [-22.8625, -43.2236],
-        executora: "Universidade Federal do Rio de Janeiro"
-    }),
+    //criarProjeto({
+     //   sigla: "AssistEMT",
+      //  imagem: "imagem_assistemt.jpg",
+       // titulo: "Efeitos da estimulação transcraniana não-invasiva na funcionalidade de membro superior após o acidente vascular cerebral e sua associação à COVID-19",
+       // instituicao: "Universidade Federal do Rio de Janeiro",
+       // coordenacao: "Coordenação não informada",
+       // resumo: "Resumo não disponível",
+      //  cidade: "Rio de Janeiro (RJ)",
+      //  coordenadas: [-22.8625, -43.2236],
+      //  executora: "Universidade Federal do Rio de Janeiro"
+   // }),
 
     // Salvador (BA)
     criarProjeto({
@@ -344,11 +343,11 @@ O cuidado é visto como um direito universal, sendo garantido por meio de polít
     // São Paulo (SP) - Projeto 1
     criarProjeto({
         sigla: "PdComp",
-        imagem: "imagem_pdcomp.jpg",
+        imagem: "imagem_pdcomp.png",
         titulo: "Desenvolvimento de pé protético em compósito via tecnologia assistiva com foco em melhora da funcionalidade e custo competitivo ao mercado nacional",
         instituicao: "Instituto de Pesquisas Tecnológicas do Estado de São Paulo",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Alessandro Guimarães",
+        resumo: "No Brasil, o setor de produtos assistivos ainda é incipiente e dependente de importações para atender a demanda interna, consequentemente, o alto custo de próteses disponíveis no mercado nacional, em alguns casos limita o acesso das pessoas com necessidades especiais a estes produtos. Neste contexto, o presente projeto tem como objetivo o domínio do ciclo de desenvolvimento e fabricação de próteses de compósito de matriz polimérica, para atendimento das demandas nacionais. Desta forma, será desenvolvida uma prótese de membro inferior (pé) em material compósito, satisfazendo exigências de conforto, durabilidade e baixo custo ao paciente, se comparado com as soluções disponíveis atualmente no Brasil. As principais etapas para este desenvolvimento se concentram na definição e caracterização dos materiais, no design de protótipos virtuais, nos ensaios estáticos e dinâmicos de protótipos físicos e nos ensaios biomecânicos de protótipos funcionais. Todo o desenvolvimento será realizado em uma rede composta pelo Laboratório de Estruturas Leves (LEL-UNMA/IPT), Laboratório de Celulose, Papel e Embalagem (LCPE-UNMA/IPT), Laboratório de Modelos Tridimensionais (LAMOT-INT), Laboratório de Tecnologia Assistiva e Inclusão (LATAI-INT) e a empresa MEHS/Maximize Technology Health and Sports Ltda (MAXi Science).",
         cidade: "São Paulo (SP)",
         coordenadas: [-23.5614, -46.7072],
         executora: "Instituto de Pesquisas Tecnológicas do Estado de São Paulo"
@@ -360,8 +359,8 @@ O cuidado é visto como um direito universal, sendo garantido por meio de polít
         imagem: "imagem_rps50_ta.jpg",
         titulo: "Rede de laboratórios de pesquisa em saúde 5.0 da UNIFESP para desenvolvimento e inovação em tecnologia assistiva",
         instituicao: "Universidade Federal de São Paulo",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Vagner Rogério dos Santos",
+        resumo: "Este projeto visa consolidar uma Rede de Pesquisa em Saúde 5.0 na UNIFESP, de fácil acesso para usuários públicos e privados. A ideia é que a Rede - que denominamos “Rede INOVATA” (acrônimo de “Rede de Inovação em Tecnologia Assistiva”) - desenvolva soluções centradas no indivíduo, visando melhorar a autonomia, o acesso à educação, cultura, lazer e convívio social de pessoas com deficiência e idosos. ",
         cidade: "São Paulo (SP)",
         coordenadas: [-23.6036, -46.6733],
         executora: "Universidade Federal de São Paulo"
@@ -370,11 +369,11 @@ O cuidado é visto como um direito universal, sendo garantido por meio de polít
     // Seropédica (RJ)
     criarProjeto({
         sigla: "TECincluir",
-        imagem: "imagem_tecincluir.jpg",
+        imagem: "imagem_tecincluir.png",
         titulo: "Inclusão e desenvolvimento de pessoas com deficiência: rede intersetorial e interinstitucional de laboratórios multiusuários de tecnologia assistiva",
         instituicao: "Universidade Federal Rural do Rio de Janeiro",
-        coordenacao: "Coordenação não informada",
-        resumo: "Resumo não disponível",
+        coordenacao: "Márcia Denise Pletsch",
+        resumo: "Proposto pelo Centro de Inovação Tecnológica e Educação Inclusiva da UFRRJ, em parceria com o Laboratório de Tecnologia Assistiva e Inclusão do INT, o Laboratório de Tecnologia Assistiva do Centro de  Educação/UFRN e o Laboratório de Aprendizagem Robótica (LAR/UERN), este projeto tem como foco desenvolver e validar soluções de Tecnologia Assistiva (TA) que auxiliem o desenvolvimento de pessoas com deficiência intelectual, autismo e deficiência múltipla, Síndrome Congênita do Zika Vírus, e, na sequência, implementar e avaliar ações de formação continuada de profissionais que usam a TA considerando a inclusão, o desenho universal, a acessibilidade comunicacional e a intersetorialidade. A proposta adotará um design participativo e colaborativo, será desenvolvida em dez fases. O modelo biopsicossocial da CIF, contido na LBI, será usado para avaliar a funcionalidade das pessoas com deficiência nas atividades para posterior projeção das soluções a serem desenvolvidas. A pesquisa traz inovação científica, tecnológica e social na área de TA e poderá contribuir com a qualidade de vida de pessoas com deficiência e a transferência de tecnologia e conhecimento sobre TA.",
         cidade: "Seropédica (RJ)",
         coordenadas: [-22.7608, -43.6919],
         executora: "Universidade Federal Rural do Rio de Janeiro"
@@ -396,7 +395,7 @@ O cuidado é visto como um direito universal, sendo garantido por meio de polít
     // Uberlândia (MG) - Projeto 2 (com coordenação específica)
     criarProjeto({
         sigla: "TACintesp",
-        imagem: "imagem_reabnet.jpg",
+        imagem: "imagem_TACintesp.jpg",
         titulo: "Inovação em Tecnologia Assistiva para a Vida Diária e o Esporte",
         instituicao: "Universidade Federal de Uberlândia",
         coordenacao: "Cleudmar Amaral de Araújo",
@@ -409,11 +408,11 @@ O cuidado é visto como um direito universal, sendo garantido por meio de polít
     // Uberlândia (MG) - Projeto 3 (SisLab com imagem centralizada)
     {
         sigla: "SisLab",
-        imagem: "logosislab_transp.png",
+        imagem: "imagem_logosislab_transp.png",
         titulo: "Laboratório Integrador SEDES/MCTI-UFU",
         instituicao: "Universidade Federal de Uberlândia",
         coordenacao: "Cleudmar Amaral de Araújo",
-        resumo:  `Sistema Nacional de Laboratórios de Tecnologia Assistiva (SisAssistiva) é uma iniciativa do MCTI, estruturado por REDES de laboratórios multiusuários, por meio da gestão e articulação do Laboratório Integrador SEDES/MCTI - UFU (SisLAB), com o objetivo de promover pesquisa, desenvolvimento, formação de capital humano, serviços tecnológicos, empreendedorismo e inovação em Tecnologia Assistiva (TA), visando o desenvolvimento de métodos, processos e produtos assistivos.`,
+        resumo:  `Sistema Nacional de Laboratórios de Tecnologia Assistiva (SisAssistiva) é uma iniciativa do MCTI, estruturado por REDES de laboratórios, por meio da gestão e articulação do Laboratório Integrador SEDES/MCTI - UFU (SIsLAB), com o objetivo de promover pesquisa, desenvolvimento, formação de capital humano, serviços tecnológicos, empreendedorismo e inovação em Tecnologia Assistiva (TA), visando o desenvolvimento de métodos, processos e produtos assistivos.`,
         cidade: "Uberlândia (MG)",
         coordenadas: [-18.9186, -48.2628],
         executora: "Universidade Federal de Uberlândia",
