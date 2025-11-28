@@ -30,7 +30,7 @@ const projetos = [
     // Belo Horizonte (MG)
     criarProjeto({
         sigla: "BIOPROT",
-        imagem: "imagem_bioprot.png",
+        imagem: "img/imagem_bioprot.png",
         titulo: "Desenvolvimento de sistemas para melhoria da usabilidade e incorporação de próteses de membro superior",
         instituicao: "Universidade Federal de Minas Gerais",
         coordenacao: "Claysson Bruno Santos Vimieiro",
@@ -261,7 +261,7 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
         titulo: "Monan: Plataforma Inteligente para Diagnóstico e Desenvolvimento da Comunicação e Aprendizagem da Criança Autista",
         instituicao: "Universidade Federal de Pernambuco",
         coordenacao: "Wellington Pinheiro dos Santos",
-        resumo:  'O Transtorno do Espectro Autista (TEA) é um distúrbio do neurodesenvolvimento que resulta em dificuldades na aprendizagem, comunicação e interação social. A plataforma MONAN (infinito em tupi-guarani) visa construir uma solução integrada de software e hardware para apoio ao diagnóstico do TEA e ao desenvolvimento intelectual, cognitivo e socioemocional de crianças autistas, especialmente as que estiverem na primeira infância. Para isto, buscar-se-á otimizar as etapas de rastreio, diagnóstico, intervenção e reavaliação dessas crianças, a partir dos seguintes objetivos específicos: i) otimização do rastreio a partir da construção de instrumentos de avaliação eficazes; ii) otimização do diagnóstico clínico propondo sistemas inteligentes que analisem áudios e vídeos; iii) investigação de métodos de diagnóstico diferencial baseados em sistemas inteligentes e eletroencefalografia; iv) desenvolvimento de um sistema de Comunicação Aumentativa e Alternativa (CAA) inteligente; v) construção de aplicativos gamificados para auxiliar no desenvolvimento da consciência fonológica e vi) construção de um corpus em português brasileiro para CAA.',
+        resumo: 'O Transtorno do Espectro Autista (TEA) é um distúrbio do neurodesenvolvimento que resulta em dificuldades na aprendizagem, comunicação e interação social. A plataforma MONAN (infinito em tupi-guarani) visa construir uma solução integrada de software e hardware para apoio ao diagnóstico do TEA e ao desenvolvimento intelectual, cognitivo e socioemocional de crianças autistas, especialmente as que estiverem na primeira infância. Para isto, buscar-se-á otimizar as etapas de rastreio, diagnóstico, intervenção e reavaliação dessas crianças, a partir dos seguintes objetivos específicos: i) otimização do rastreio a partir da construção de instrumentos de avaliação eficazes; ii) otimização do diagnóstico clínico propondo sistemas inteligentes que analisem áudios e vídeos; iii) investigação de métodos de diagnóstico diferencial baseados em sistemas inteligentes e eletroencefalografia; iv) desenvolvimento de um sistema de Comunicação Aumentativa e Alternativa (CAA) inteligente; v) construção de aplicativos gamificados para auxiliar no desenvolvimento da consciência fonológica e vi) construção de um corpus em português brasileiro para CAA.',
         cidade: "Recife (PE)",
         coordenadas: [-8.0527, -34.9513],
         executora: "Universidade Federal de Pernambuco"
@@ -307,16 +307,16 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
 
     // Rio de Janeiro (RJ) - Projeto 4
     //criarProjeto({
-     //   sigla: "AssistEMT",
-      //  imagem: "imagem_assistemt.jpg",
-       // titulo: "Efeitos da estimulação transcraniana não-invasiva na funcionalidade de membro superior após o acidente vascular cerebral e sua associação à COVID-19",
-       // instituicao: "Universidade Federal do Rio de Janeiro",
-       // coordenacao: "Coordenação não informada",
-       // resumo: "Resumo não disponível",
-      //  cidade: "Rio de Janeiro (RJ)",
-      //  coordenadas: [-22.8625, -43.2236],
-      //  executora: "Universidade Federal do Rio de Janeiro"
-   // }),
+    //   sigla: "AssistEMT",
+    //  imagem: "imagem_assistemt.jpg",
+    // titulo: "Efeitos da estimulação transcraniana não-invasiva na funcionalidade de membro superior após o acidente vascular cerebral e sua associação à COVID-19",
+    // instituicao: "Universidade Federal do Rio de Janeiro",
+    // coordenacao: "Coordenação não informada",
+    // resumo: "Resumo não disponível",
+    //  cidade: "Rio de Janeiro (RJ)",
+    //  coordenadas: [-22.8625, -43.2236],
+    //  executora: "Universidade Federal do Rio de Janeiro"
+    // }),
 
     // Salvador (BA)
     criarProjeto({
@@ -325,7 +325,7 @@ O espaço está em localização estratégica na UFRN, com importante acesso ao 
         titulo: "Laboratório de tecnologias de cuidados sociais: formação, experiências e soluções inovadoras",
         instituicao: "Universidade Federal da Bahia",
         coordenacao: "Edgilson Tavares de Araújo",
-           resumo: `O CuidarLab visa desenvolver tecnologias de cuidados sociais para pessoas com deficiência e/ou idosas, promovendo a melhoria das relações de interdependência familiar e comunitária, além da autonomia cotidiana.
+        resumo: `O CuidarLab visa desenvolver tecnologias de cuidados sociais para pessoas com deficiência e/ou idosas, promovendo a melhoria das relações de interdependência familiar e comunitária, além da autonomia cotidiana.
 
 Seus objetivos incluem:
 - Criar tecnologias para ampliar a oferta de produtos e serviços de cuidados
@@ -399,7 +399,7 @@ O cuidado é visto como um direito universal, sendo garantido por meio de polít
         titulo: "Inovação em Tecnologia Assistiva para a Vida Diária e o Esporte",
         instituicao: "Universidade Federal de Uberlândia",
         coordenacao: "Cleudmar Amaral de Araújo",
-        resumo:  `A proposta visa atender as demandas das pessoas com deficiências e doenças raras, especialmente cadeirantes, que ainda enfrentam desafios apesar dos avanços tecnológicos. As soluções abrangem a criação de tecnologias assistivas para promover o desenvolvimento pessoal, desempenho físico e redução da dependência de importações. Entre as iniciativas estão: o desenvolvimento de uma tecnologia para detecção de câncer de mama, reatores para produção de materiais viscoelásticos, protótipos de cadeiras de rodas de alto desempenho, ergômetros para avaliação física, impressoras 3D de grande porte,  projetos de espaços recreativos acessíveis, sistemas de mobilidade urbana adaptados, bikes para esportes paralímpicos e recursos pedagógicos inovadores. Além dissom, a proposta busca a disseminação de conhecimentos em TA no Brasil.`,
+        resumo: `A proposta visa atender as demandas das pessoas com deficiências e doenças raras, especialmente cadeirantes, que ainda enfrentam desafios apesar dos avanços tecnológicos. As soluções abrangem a criação de tecnologias assistivas para promover o desenvolvimento pessoal, desempenho físico e redução da dependência de importações. Entre as iniciativas estão: o desenvolvimento de uma tecnologia para detecção de câncer de mama, reatores para produção de materiais viscoelásticos, protótipos de cadeiras de rodas de alto desempenho, ergômetros para avaliação física, impressoras 3D de grande porte,  projetos de espaços recreativos acessíveis, sistemas de mobilidade urbana adaptados, bikes para esportes paralímpicos e recursos pedagógicos inovadores. Além dissom, a proposta busca a disseminação de conhecimentos em TA no Brasil.`,
         cidade: "Uberlândia (MG)",
         coordenadas: [-18.9186, -48.2628],
         executora: "Universidade Federal de Uberlândia"
@@ -412,11 +412,11 @@ O cuidado é visto como um direito universal, sendo garantido por meio de polít
         titulo: "Laboratório Integrador SEDES/MCTI-UFU",
         instituicao: "Universidade Federal de Uberlândia",
         coordenacao: "Cleudmar Amaral de Araújo",
-        resumo:  `Sistema Nacional de Laboratórios de Tecnologia Assistiva (SisAssistiva) é uma iniciativa do MCTI, estruturado por REDES de laboratórios, por meio da gestão e articulação do Laboratório Integrador SEDES/MCTI - UFU (SIsLAB), com o objetivo de promover pesquisa, desenvolvimento, formação de capital humano, serviços tecnológicos, empreendedorismo e inovação em Tecnologia Assistiva (TA), visando o desenvolvimento de métodos, processos e produtos assistivos.`,
+        resumo: `Sistema Nacional de Laboratórios de Tecnologia Assistiva (SisAssistiva) é uma iniciativa do MCTI, estruturado por REDES de laboratórios, por meio da gestão e articulação do Laboratório Integrador SEDES/MCTI - UFU (SIsLAB), com o objetivo de promover pesquisa, desenvolvimento, formação de capital humano, serviços tecnológicos, empreendedorismo e inovação em Tecnologia Assistiva (TA), visando o desenvolvimento de métodos, processos e produtos assistivos.`,
         cidade: "Uberlândia (MG)",
         coordenadas: [-18.9186, -48.2628],
         executora: "Universidade Federal de Uberlândia",
- get info() {
+        get info() {
             return `
 <div class='project-info'>
     <h3>${this.sigla}</h3>
@@ -432,7 +432,7 @@ O cuidado é visto como um direito universal, sendo garantido por meio de polít
             `;
         }
     },
-          
+
     // Vitória (ES)
     criarProjeto({
         sigla: "RoBOpTICA",
