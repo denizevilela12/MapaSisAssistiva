@@ -30,7 +30,7 @@ const projetos = [
     // Belo Horizonte (MG)
     criarProjeto({
         sigla: "BIOPROT",
-        imagem: "img/imagem_bioprot.png",
+        imagem: "imagem_bioprot.png",
         titulo: "Desenvolvimento de sistemas para melhoria da usabilidade e incorporação de próteses de membro superior",
         instituicao: "Universidade Federal de Minas Gerais",
         coordenacao: "Claysson Bruno Santos Vimieiro",
