@@ -124,9 +124,10 @@ function adicionarTabelaEstados() {
         }
         
         .tabela-assistiva {
-            width: auto;
-            min-width: 300px;
-            margin: 0 auto;
+          width: auto;
+    min-width: 300px;
+    margin: 0 auto;
+    font-size: 12px;
         }
         
         .tabela-assistiva th {
