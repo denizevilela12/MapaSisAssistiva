@@ -150,7 +150,7 @@ function adicionarTabelaEstados() {
         
         #legenda h2 {
             color: #2c5282;
-            font-size: 18px;
+            font-size: 14px;
             margin-bottom: 15px;
             font-weight: bold;
         }
