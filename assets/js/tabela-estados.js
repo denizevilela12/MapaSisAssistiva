@@ -127,7 +127,7 @@ function adicionarTabelaEstados() {
           width: auto;
     min-width: 300px;
     margin: 0 auto;
-    font-size: 12px;
+    font-size: 10px;
         }
         
         .tabela-assistiva th {
@@ -150,7 +150,7 @@ function adicionarTabelaEstados() {
         
         #legenda h2 {
             color: #2c5282;
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 15px;
             font-weight: bold;
         }
